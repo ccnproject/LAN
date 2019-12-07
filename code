@@ -1,0 +1,243 @@
+#make multilayer switch VTP  
+Switch>en
+Switch#conf t
+Enter configuration commands,one per line.End with CNTL/Z
+Switch(config)#VTP mode server
+Device mode already VTP SERVER.
+Switch(config)#vtp domain arushi
+Switch(config)#VTP password arushi
+
+Switch(config)#CONF T
+Switch(config) #VLAN 100
+Switch(config-vlan)#Exit
+Switch(config)#VLAN 200
+Switch(config-vlan)#Exit
+Switch(config)#VLAN 300
+Switch(config-vlan)#Exit
+Switch(config) #int fa0/4
+Switch(config-if)#switchport trunk encapsulation dot1q
+
+#Router enabling
+Router>enable
+Router#conf t
+Router(config)# int fa0/0.1
+Router(config-subif)#ip address 192.168.0.1 255.255.255.192
+Router(config-subif)#encapsulation dot1Q 100
+Router(config-subif)#exit
+Router(config)# int fa0/0.2
+Router(config-subif)#ip address 192.168.0.65 255.255.255.192
+Router(config-subif)#encapsulation dot1Q 200
+Router(config-subif)#exit
+Router(config)# int fa0/0.3
+Router(config-subif)#ip address 192.168.0.129 255.255.255.192
+Router(config-subif)#encapsulation dot1Q 300
+Router(config-subif)#exit
+Router(config)#int fa0/0.1
+Router(config-subif)#ip helper-address 192.168.0.194
+Router(config-subif)#exit
+Router(config)#int fa0/0.2
+Router(config-subif)#ip helper-address 192.168.0.194
+Router(config-subif)#exit
+Router(config)#int fa0/0.3
+Router(config-subif)#ip helper-address 192.168.0.194
+Router(config-subif)#exit
+
+Switch(config-if)#sw
+Switch(config-if)#switchport mode access
+Switch(config-if)#switchport-security?
+mac-address   Secure mac address
+maximum       Max secure adddresses
+violation     Security violation mode
+<cr>
+Switch(config-if)#switchport port-security maximum?
+<1-132> Maximum addresses
+Switch(config-if)#switchport port-security maximum 1
+Switch(config-if)#switchport port-security mac-address sticky
+Switch(config-if)#switchport port-security violation shutdown
+
+Router>EN
+Password:
+Router#conft
+Enter configuration commands,one per line. End with CNTL/z.
+Router(config)#enable secret ccna
+Router(config)#line vty 0 3
+Roter(config-line)#password telnet
+Router(config-line)#login
+Router(config-line)#exec-time 2
+Router(config-line)#wexit
+
+Switch 0
+SW0>
+SW0>enable
+SW0#config terminal 
+Enter configuration commands, one per line. End with CNTL/Z
+SW0 (config)#enable secret ccna
+ 
+Switch 1
+SW1>
+SW1>enable
+SW1#config terminal 
+Enter configuration commands, one per line. End with CNTL/Z
+SW1(config)#enable secret ccna
+
+Switch 2
+SW2>
+SW2>enable
+SW2#config terminal 
+Enter configuration commands, one per line. End with CNTL/Z
+SW2(config)#enable secret ccna
+Switch 3
+SW3>
+SW3>enable
+SW3#config terminal 
+Enter configuration commands, one per line. End with CNTL/Z
+SW3(config)#enable secret ccna
+Switch 4
+SW4>
+SW4>enable
+SW4#config terminal 
+Enter configuration commands, one per line. End with CNTL/Z
+SW4(config)#enable secret ccna
+Switch 5
+SW5>
+SW5>enable
+SW5#config terminal 
+Enter configuration commands, one per line. End with CNTL/Z
+SW5(config)#enable secret ccna
+
+Switch 6
+SW6>
+SW6>enable
+SW6#config terminal 
+Enter configuration commands, one per line. End with CNTL/Z
+SW6(config)#enable secret ccna
+Switch 7
+SW7>
+SW7>enable
+SW7#config terminal 
+Enter configuration commands, one per line. End with CNTL/Z
+SW7(config)#enable secret ccna
+Switch 8
+SW8>
+SW8>enable
+SW8#config terminal 
+Enter configuration commands, one per line. End with CNTL/Z
+SW8(config)#enable secret ccna
+Switch 9
+SW9>
+SW9>enable
+SW9#config terminal 
+Enter configuration commands, one per line. End with CNTL/Z
+SW9(config)#enable secret ccna
+
+Line console password : telnet
+Switch 0
+SW0(config)#line con 0 
+SW0(config-line)#password cisco
+SW0(config-line)#login
+ 
+Switch 1
+SW1(config)#line con 0 
+SW1(config-line)#password cisco 
+SW1(config-line)#login
+Switch 2
+SW2(config)#line con 0 
+SW2(config-line)#password cisco 
+SW2(config-line)#login
+Switch 3
+SW3(config)#line con 0 
+SW3(config-line)#password cisco 
+SW3(config-line)#login
+Switch 4
+SW4(config)#line con 0 
+SW4(config-line)#password cisco 
+SW4(config-line)#login
+Switch 5
+SW5(config)#line con 0 
+SW5(config-line)#password cisco 
+SW5(config-line)#login
+Switch 6
+SW6(config)#line con 0 
+SW6(config-line)#password cisco 
+SW6(config-line)#login
+Switch 7
+SW7(config)#line con 0 
+SW7(config-line)#password cisco 
+SW7(config-line)#login
+Switch 8
+SW8(config)#line con 0 
+SW8(config-line)#password cisco 
+SW8(config-line)#login
+Switch 9
+SW9(config)#line con 0 
+SW9(config-line)#password cisco
+SW9(config-line)#login
+c.	Line VTY password : telnet
+Switch 0 
+SW0(config)#line vty 0 4
+SW0 (config-line)#password telnet
+SW0(config-line)#exec-timeout 5 0 
+SW0 (config-line)#login
+ 
+Switch 1
+SW1 (config)#line vty 0 4
+SW1 (config-line)#password telnet
+SW1(config-line)#exec-timeout 5 0 
+SW1 (config-line)#login
+
+Switch 2 
+SW2 (config)#line vty 0 4
+SW2 (config-line)#password telnet
+SW2(config-line)#exec-timeout 5 0 
+SW2 (config-line)#login
+
+Switch 3
+SW3 (config)#line vty 0 4
+SW3 (config-line)#password telnet
+SW3(config-line)#exec-timeout 5 0 
+SW3 (config-line)#login
+
+Switch 4
+SW4 (config)#line vty 0 4
+SW4 (config-line)#password telnet
+SW4 (config-line)#exec-timeout 5 0 
+SW4 (config-line)#login
+
+Switch 5
+SW5 (config)#line vty 0 4
+SW5 (config-line)#password telnet
+SW5 (config-line)#exec-timeout 5 0 
+SW5 (config-line)#login
+
+Switch 6 
+SW6 (config)#line vty 0 4
+SW6 (config-line)#password telnet
+SW6 (config-line)#exec-timeout 5 0 
+SW6 (config-line)#login
+
+Switch 7
+SW7 (config)#line vty 0 4
+SW7 (config-line)#password telnet
+SW7 (config-line)#exec-timeout 5 0 
+SW7 (config-line)#login
+
+Switch  8
+SW8 (config)#line vty 0 4
+SW8 (config-line)#password telnet
+SW8 (config-line)#exec-timeout 5 0 
+SW8 (config-line)#login
+
+Switch 9
+SW9 (config)#line vty 0 4
+SW9 (config-line)#password telnet
+SW9 (config-line)#exec-timeout 5 0 
+SW9 (config-line)#login
+
+
+
+
+
+
+
+
+
